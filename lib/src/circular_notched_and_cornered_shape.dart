@@ -10,17 +10,17 @@ class CircularNotchedAndCorneredRectangle extends NotchedShape {
   /// Creates a [CircularNotchedAndCorneredRectangle].
   ///
   /// The same object can be used to create multiple shapes.
-  final Animation<double>? animation;
+  final Animation<double> animation;
   final NotchSmoothness notchSmoothness;
   final GapLocation gapLocation;
   final double leftCornerRadius;
   final double rightCornerRadius;
 
   CircularNotchedAndCorneredRectangle({
-    required this.notchSmoothness,
-    required this.gapLocation,
-    required this.leftCornerRadius,
-    required this.rightCornerRadius,
+     this.notchSmoothness,
+     this.gapLocation,
+     this.leftCornerRadius,
+     this.rightCornerRadius,
     this.animation,
   });
 
@@ -36,7 +36,7 @@ class CircularNotchedAndCorneredRectangle extends NotchedShape {
   /// The notch is curve that smoothly connects the host's top edge and
   /// the guest circle.
   @override
-  Path getOuterPath(Rect host, Rect? guest) {
+  Path getOuterPath(Rect host, Rect guest) {
     if (guest == null || !host.overlaps(guest)) {
       if (this.rightCornerRadius > 0 || this.leftCornerRadius > 0) {
         double leftCornerRadius =
@@ -150,7 +150,7 @@ class CircularNotchedAndCorneredRectangle extends NotchedShape {
   }
 }
 
-extension on NotchSmoothness? {
+extension on NotchSmoothness {
   static const curveS1 = {
     NotchSmoothness.sharpEdge: 0.0,
     NotchSmoothness.defaultEdge: 15.0,
