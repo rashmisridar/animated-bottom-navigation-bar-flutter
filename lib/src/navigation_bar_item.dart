@@ -10,7 +10,7 @@ class NavigationBarItem extends StatelessWidget {
   final Color bubbleColor;
   final Color activeColor;
   final Color inactiveColor;
-  final ImageIcon iconData;
+  final Image iconData;
   final double iconScale;
   final double iconSize;
   final VoidCallback onTap;

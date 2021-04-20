@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TabItem extends StatelessWidget {
-  final ImageIcon iconData;
+  final Image iconData;
   final double iconSize;
   final bool isActive;
   final Color activeColor;

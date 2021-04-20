@@ -21,7 +21,7 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
   final int itemCount;
 
   /// Icon data to render in the tab bar.
-  final List<ImageIcon> icons;
+  final List<Image> icons;
 
   /// Handler which is passed every updated active index.
   final Function(int) onTap;
@@ -123,7 +123,7 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
 
   AnimatedBottomNavigationBar({
     Key key,
-    List<ImageIcon> icons,
+    List<Image> icons,
     int activeIndex,
     Function(int) onTap,
     double height,
