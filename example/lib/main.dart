@@ -4,6 +4,7 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:circular_reveal_animation/circular_reveal_animation.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -54,7 +55,8 @@ class _MyHomePageState extends State<MyHomePage>
   void initState() {
     super.initState();
     final systemTheme = SystemUiOverlayStyle.light.copyWith(
-      systemNavigationBarColor: HexColor('#373A36'),
+      systemNavigationBarColor: Colors.greenAccent,
+      statusBarColor: Colors.yellow, //HexColor('#373A36'),
       systemNavigationBarIconBrightness: Brightness.light,
     );
     SystemChrome.setSystemUIOverlayStyle(systemTheme);
@@ -88,15 +90,31 @@ class _MyHomePageState extends State<MyHomePage>
       data: ThemeData.dark(),
       child: Scaffold(
         extendBody: true,
-        appBar: AppBar(
-          title: Text(
-            widget.title,
+        body: NestedScrollView(
+          scrollDirection: Axis.vertical,
+          dragStartBehavior: DragStartBehavior.start,
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            return <Widget>[
+              SliverAppBar(
+                brightness: Brightness.light, // status bar brightness
+                automaticallyImplyLeading: false,
+                floating: true,
+                pinned: true, //false
+                snap: true,
+                elevation: 0.0,
+                backgroundColor: Colors.red,
+                title: Text(
+                  'Welcome to flutter',
+                  style: TextStyle(color: Colors.white),
+                ),
+                centerTitle: true,
+              )
+            ];
+          },
+          body: Text(
+            'Hi',
             style: TextStyle(color: Colors.white),
           ),
-          backgroundColor: HexColor('#373A36'),
-        ),
-        body: NavigationScreen(
-          iconList[_bottomNavIndex],
         ),
         floatingActionButton: ScaleTransition(
           scale: animation,
