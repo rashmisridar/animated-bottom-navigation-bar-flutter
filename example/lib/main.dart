@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+  MyHomePage({Key key, this.title}) : super(key: key);
 
   final String title;
 
@@ -39,9 +39,9 @@ class _MyHomePageState extends State<MyHomePage>
   final autoSizeGroup = AutoSizeGroup();
   var _bottomNavIndex = 0; //default index of a first screen
 
-  late AnimationController _animationController;
-  late Animation<double> animation;
-  late CurvedAnimation curve;
+  AnimationController _animationController;
+  Animation<double> animation;
+  CurvedAnimation curve;
 
   final iconList = <IconData>[
     Icons.brightness_5,
@@ -122,11 +122,17 @@ class _MyHomePageState extends State<MyHomePage>
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
-                  iconList[index],
-                  size: 24,
-                  color: color,
-                ),
+                index == 0
+                    ? Icon(
+                        iconList[index],
+                        size: 24,
+                        color: color,
+                      )
+                    : Icon(
+                        iconList[index],
+                        size: 24,
+                        color: color,
+                      ),
                 const SizedBox(height: 4),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -167,8 +173,8 @@ class NavigationScreen extends StatefulWidget {
 
 class _NavigationScreenState extends State<NavigationScreen>
     with TickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> animation;
+  AnimationController _controller;
+  Animation<double> animation;
 
   @override
   void didUpdateWidget(NavigationScreen oldWidget) {
